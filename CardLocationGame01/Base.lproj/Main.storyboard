@@ -1,24 +1,302 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_7" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Game Controller-->
+        <scene sceneID="Y2I-NN-Fyo">
+            <objects>
+                <viewController id="uNC-E3-3Jj" customClass="GameController" customModule="CardLocationGame01" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4sB-VI-fMw">
+                        <rect key="frame" x="0.0" y="0.0" width="932" height="430"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avz-2y-uXt">
+                                <rect key="frame" x="112.66666666666669" y="57.666666666666657" width="215" height="315"/>
+                                <color key="backgroundColor" red="0.40255835255418526" green="0.54777019810681404" blue="1" alpha="0.26619614829718952" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="315" id="7CZ-pu-Ytu"/>
+                                    <constraint firstAttribute="width" constant="215" id="uJz-3A-mJV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOk-0s-v98">
+                                <rect key="frame" x="604.66666666666663" y="57.666666666666657" width="215" height="315"/>
+                                <color key="backgroundColor" red="0.4025583526" green="0.54777019810000005" blue="1" alpha="0.26619614829999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="215" id="Zye-Oq-MCV"/>
+                                    <constraint firstAttribute="height" constant="315" id="tZY-6c-tmZ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJI-fB-XJA">
+                                <rect key="frame" x="185" y="15" width="70.333333333333314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="XuA-pm-aA1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XD-Bg-aCH">
+                                <rect key="frame" x="677" y="15" width="70.333333333333371" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4FA-VF-c3E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-card" translatesAutoresizingMaskIntoConstraints="NO" id="6uz-GZ-aik">
+                                <rect key="frame" x="120" y="65" width="200" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="bbx-QU-904"/>
+                                    <constraint firstAttribute="height" constant="300" id="lWl-EW-oUh"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-card" translatesAutoresizingMaskIntoConstraints="NO" id="ASj-ly-OUf">
+                                <rect key="frame" x="612" y="65" width="200" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9sh-i3-Qhx"/>
+                                    <constraint firstAttribute="height" constant="300" id="lZB-b3-2zq"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="agc-2J-i5g">
+                                <rect key="frame" x="431" y="180" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Bdh-2m-Y5N"/>
+                                    <constraint firstAttribute="width" constant="70" id="cfx-Am-htg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qom-8V-275">
+                                <rect key="frame" x="436" y="256" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="J8P-z0-z5H"/>
+                                    <constraint firstAttribute="width" constant="60" id="RlP-p9-l3w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="24U-Ei-nas"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="24U-Ei-nas" firstAttribute="trailing" secondItem="ASj-ly-OUf" secondAttribute="trailing" constant="120" id="1pz-GZ-hKV"/>
+                            <constraint firstItem="Qom-8V-275" firstAttribute="top" secondItem="agc-2J-i5g" secondAttribute="bottom" constant="6" id="5Hh-KG-J37"/>
+                            <constraint firstItem="Qom-8V-275" firstAttribute="centerX" secondItem="agc-2J-i5g" secondAttribute="centerX" id="9Gd-4d-Una"/>
+                            <constraint firstItem="agc-2J-i5g" firstAttribute="centerY" secondItem="4sB-VI-fMw" secondAttribute="centerY" id="BaA-n8-8Vh"/>
+                            <constraint firstItem="6uz-GZ-aik" firstAttribute="leading" secondItem="24U-Ei-nas" secondAttribute="leading" constant="120" id="FZq-Pf-PbO"/>
+                            <constraint firstItem="6uz-GZ-aik" firstAttribute="top" secondItem="mJI-fB-XJA" secondAttribute="bottom" constant="10" id="Jcg-k2-zOI"/>
+                            <constraint firstItem="avz-2y-uXt" firstAttribute="centerX" secondItem="6uz-GZ-aik" secondAttribute="centerX" id="Jvz-dZ-OMd"/>
+                            <constraint firstItem="ASj-ly-OUf" firstAttribute="top" secondItem="7XD-Bg-aCH" secondAttribute="bottom" constant="10" id="KYk-s3-hEJ"/>
+                            <constraint firstItem="6uz-GZ-aik" firstAttribute="centerY" secondItem="4sB-VI-fMw" secondAttribute="centerY" id="P1K-GD-33l"/>
+                            <constraint firstItem="avz-2y-uXt" firstAttribute="centerY" secondItem="6uz-GZ-aik" secondAttribute="centerY" id="WJq-eq-fAo"/>
+                            <constraint firstItem="kOk-0s-v98" firstAttribute="centerX" secondItem="ASj-ly-OUf" secondAttribute="centerX" id="ZsA-H6-jj6"/>
+                            <constraint firstAttribute="centerY" secondItem="ASj-ly-OUf" secondAttribute="centerY" id="cAI-5T-rxY"/>
+                            <constraint firstItem="agc-2J-i5g" firstAttribute="centerX" secondItem="4sB-VI-fMw" secondAttribute="centerX" id="cpc-rQ-pdM"/>
+                            <constraint firstItem="kOk-0s-v98" firstAttribute="centerY" secondItem="ASj-ly-OUf" secondAttribute="centerY" id="iDC-tj-JZN"/>
+                            <constraint firstItem="7XD-Bg-aCH" firstAttribute="centerX" secondItem="ASj-ly-OUf" secondAttribute="centerX" id="ity-Wc-D84"/>
+                            <constraint firstItem="mJI-fB-XJA" firstAttribute="centerX" secondItem="6uz-GZ-aik" secondAttribute="centerX" id="sng-Ss-6Nr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8gx-D0-fMA"/>
+                    <connections>
+                        <outlet property="game_IMG_clock" destination="agc-2J-i5g" id="hnE-Cv-sHB"/>
+                        <outlet property="game_IMG_leftCard" destination="6uz-GZ-aik" id="OFD-fz-DXr"/>
+                        <outlet property="game_IMG_rightCard" destination="ASj-ly-OUf" id="JBv-dQ-SD7"/>
+                        <outlet property="game_LBL_leftScore" destination="mJI-fB-XJA" id="hbt-Eo-Jmw"/>
+                        <outlet property="game_LBL_rightScore" destination="7XD-Bg-aCH" id="CSX-nd-oRx"/>
+                        <outlet property="game_LBL_timer" destination="Qom-8V-275" id="ZLq-7i-bkb"/>
+                        <outlet property="game_VIEW_leftGlow" destination="avz-2y-uXt" id="djG-U8-aky"/>
+                        <outlet property="game_VIEW_rightGlow" destination="kOk-0s-v98" id="Gqw-PA-Mcv"/>
+                        <segue destination="yFy-ta-Sp9" kind="show" identifier="toEnd" id="9RE-by-jLA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YGy-Iw-Bqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="123.56979405034323" y="-749.25373134328356"/>
+        </scene>
+        <!--End Controller-->
+        <scene sceneID="XuJ-fl-Lfi">
+            <objects>
+                <viewController id="yFy-ta-Sp9" customClass="EndController" customModule="CardLocationGame01" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iKr-Jq-0rz">
+                        <rect key="frame" x="0.0" y="0.0" width="932" height="430"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5l-IF-Nzr">
+                                <rect key="frame" x="409.66666666666669" y="109" width="112.66666666666669" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0GX-Ps-hK4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnx-8l-OVV">
+                                <rect key="frame" x="373.33333333333331" y="346" width="185.66666666666669" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="m0y-kU-Tn4"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Back To Menu">
+                                    <fontDescription key="titleFontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickedBackToMenu:" destination="yFy-ta-Sp9" eventType="touchUpInside" id="YX8-PP-QfF"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toMenu" id="Zhu-jF-yms"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVs-A1-gSG">
+                                <rect key="frame" x="418.33333333333331" y="169" width="95.666666666666686" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YEh-oi-9NR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wpJ-Gj-mSS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pnx-8l-OVV" firstAttribute="centerX" secondItem="iKr-Jq-0rz" secondAttribute="centerX" id="0Us-7X-qFG"/>
+                            <constraint firstItem="Y5l-IF-Nzr" firstAttribute="top" secondItem="wpJ-Gj-mSS" secondAttribute="top" constant="50" id="1iB-LY-iLA"/>
+                            <constraint firstItem="Y5l-IF-Nzr" firstAttribute="centerX" secondItem="iKr-Jq-0rz" secondAttribute="centerX" id="JBg-Jt-iGr"/>
+                            <constraint firstItem="fVs-A1-gSG" firstAttribute="centerX" secondItem="iKr-Jq-0rz" secondAttribute="centerX" id="LgG-eg-476"/>
+                            <constraint firstItem="pnx-8l-OVV" firstAttribute="bottom" secondItem="wpJ-Gj-mSS" secondAttribute="bottom" id="PY3-mf-Ll8"/>
+                            <constraint firstItem="fVs-A1-gSG" firstAttribute="top" secondItem="Y5l-IF-Nzr" secondAttribute="bottom" constant="10" id="bKV-YR-huP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ird-gx-IkI"/>
+                    <connections>
+                        <outlet property="end_LBL_score" destination="fVs-A1-gSG" id="nCG-8p-eRb"/>
+                        <outlet property="end_LBL_winner" destination="Y5l-IF-Nzr" id="qce-dE-nlT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jhl-rj-a8Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-573" y="-213"/>
+        </scene>
+        <!--Menu Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MenuController" customModule="CardLocationGame01" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="932" height="430"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K79-Ns-zSL">
+                                <rect key="frame" x="415" y="336" width="102" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4Oq-el-Xcq"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="START">
+                                    <fontDescription key="titleFontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickedStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e7r-ID-AKo"/>
+                                    <segue destination="uNC-E3-3Jj" kind="show" identifier="toGame" id="Qx4-Eb-0rj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-xg-2wH">
+                                <rect key="frame" x="395" y="40" width="142.33333333333337" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="X1N-XH-yJb"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Set Name">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickedSetName:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wnO-St-g8p"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth_right_half" translatesAutoresizingMaskIntoConstraints="NO" id="RwQ-TE-bVb">
+                                <rect key="frame" x="772" y="115" width="120" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="PNM-3p-OjN"/>
+                                    <constraint firstAttribute="height" constant="200" id="xwd-QV-10Z"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth_left_half" translatesAutoresizingMaskIntoConstraints="NO" id="hd9-RG-9JZ">
+                                <rect key="frame" x="40" y="115" width="120" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="5zC-D4-L6L"/>
+                                    <constraint firstAttribute="height" constant="200" id="k2E-LX-vGD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="West Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adp-eq-zUZ">
+                                <rect key="frame" x="60.333333333333336" y="323" width="79.666666666666657" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="5bE-CI-ExC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="East Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vS-VK-N3d">
+                                <rect key="frame" x="795.33333333333337" y="323" width="73.666666666666629" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="58Y-FO-i8B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Name!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHD-tv-xMq">
+                                <rect key="frame" x="399.33333333333331" y="100" width="133.66666666666669" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jJU-UV-4tc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <color key="textColor" cyan="0.87095290422439575" magenta="0.3674458959331251" yellow="0.0" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RwQ-TE-bVb" secondAttribute="trailing" constant="40" id="7AM-Al-dxr"/>
+                            <constraint firstItem="K79-Ns-zSL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fas-na-Gfn"/>
+                            <constraint firstItem="hd9-RG-9JZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="I8j-co-wJ0"/>
+                            <constraint firstItem="Adp-eq-zUZ" firstAttribute="top" secondItem="hd9-RG-9JZ" secondAttribute="bottom" constant="8" id="ICz-xj-IyY"/>
+                            <constraint firstItem="hd9-RG-9JZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IRI-fw-AtG"/>
+                            <constraint firstItem="RwQ-TE-bVb" firstAttribute="centerX" secondItem="2vS-VK-N3d" secondAttribute="centerX" id="XOu-ye-9m3"/>
+                            <constraint firstItem="eHD-tv-xMq" firstAttribute="top" secondItem="fMu-xg-2wH" secondAttribute="bottom" constant="10" id="XkD-hT-w96"/>
+                            <constraint firstItem="2vS-VK-N3d" firstAttribute="top" secondItem="RwQ-TE-bVb" secondAttribute="bottom" constant="8" id="Z0v-Mk-v4a"/>
+                            <constraint firstItem="fMu-xg-2wH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="40" id="Zb4-2X-DDe"/>
+                            <constraint firstItem="eHD-tv-xMq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fsK-lH-N4R"/>
+                            <constraint firstItem="Adp-eq-zUZ" firstAttribute="centerX" secondItem="hd9-RG-9JZ" secondAttribute="centerX" id="gt7-Cq-oyf"/>
+                            <constraint firstItem="RwQ-TE-bVb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="k0I-eV-2eb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="K79-Ns-zSL" secondAttribute="bottom" constant="10" id="nFi-ex-luV"/>
+                            <constraint firstItem="fMu-xg-2wH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sIZ-16-ifg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bdu-yr-D90"/>
+                    <connections>
+                        <outlet property="menu_BTN_setName" destination="fMu-xg-2wH" id="Gey-ml-J3T"/>
+                        <outlet property="menu_BTN_start" destination="K79-Ns-zSL" id="b0i-VA-I3i"/>
+                        <outlet property="menu_LBL_hiName" destination="eHD-tv-xMq" id="PL5-rE-D4g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="141" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back-card" width="512" height="512"/>
+        <image name="clock" width="512" height="512"/>
+        <image name="earth_left_half" width="450" height="900"/>
+        <image name="earth_right_half" width="450" height="900"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

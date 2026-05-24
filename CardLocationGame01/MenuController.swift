@@ -1,8 +1,101 @@
-//
-//  MenuController.swift
-//  CardLocationGame01
-//
-//  Created by שני שלו on 21/05/2026.
-//
-
 import Foundation
+import UIKit
+import CoreLocation
+
+class MenuController: UIViewController {
+    
+    @IBOutlet weak var menu_BTN_setName: UIButton!
+    @IBOutlet weak var menu_BTN_start: UIButton!
+    @IBOutlet weak var menu_LBL_hiName: UILabel!
+
+    var playerName: String = ""
+
+    var locationManager: CLLocationManager!
+    var startLocation: CLLocation?
+    var playerSide = ""
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        menu_BTN_start.isEnabled = false
+        menu_LBL_hiName.isHidden = true
+
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+
+        locationManager.requestWhenInUseAuthorization()
+    }
+
+    @IBAction func clickedStart(_ sender: UIButton) {
+
+    }
+
+    @IBAction func clickedSetName(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Set Name", message: "Enter your name", preferredStyle: .alert)
+
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Name"
+        }
+
+        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+        
+            let inputName = alertController.textFields![0].text!
+            let fixedName = inputName.capitalized
+            
+            if fixedName.isEmpty == false {
+                self.playerName = fixedName
+                
+                self.menu_BTN_setName.setTitle("Set Name", for: .normal)
+                self.menu_BTN_setName.isEnabled = false
+                self.menu_BTN_setName.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+                
+                self.menu_LBL_hiName.text = "Hi \(self.playerName)!"
+                self.menu_LBL_hiName.isHidden = false
+                
+                self.locationManager.requestLocation()
+            }
+        }
+
+        alertController.addAction(saveAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Player side move to screen 2
+        if segue.identifier == "toGame" {
+            let gameController = segue.destination as! GameController
+            gameController.playerName = playerName
+            gameController.playerSide = playerSide
+        }
+    }
+    
+}
+
+extension MenuController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("didUpdateLocations")
+        
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            startLocation = location
+            
+            let afekaLongitude = 34.8175
+
+            if location.coordinate.longitude < afekaLongitude {
+                playerSide = "west"
+            }
+            else {
+                playerSide = "east"
+            }
+            
+            print("got Location: \(location.coordinate.latitude) \(location.coordinate.longitude)")
+            
+            menu_BTN_start.isEnabled = true
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error=\(error)")
+    }
+}
