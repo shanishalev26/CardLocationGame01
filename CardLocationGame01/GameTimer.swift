@@ -13,6 +13,7 @@ protocol CallBack_GameTimer {
   }
 
   class GameTimer {
+      
       var cb: CallBack_GameTimer?
       var timer: Timer?
       var counter = 3
@@ -22,6 +23,7 @@ protocol CallBack_GameTimer {
       }
 
       func start() {
+          stop()
           counter = 3
           cb?.timerTick(counter: counter)
           timer = Timer.scheduledTimer(withTimeInterval: 1,
@@ -44,6 +46,7 @@ protocol CallBack_GameTimer {
       
       func resume() {
             // continue from current counter without resetting
+          stop()
             cb?.timerTick(counter: counter)
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats:
         true, block: secondly(t:))
