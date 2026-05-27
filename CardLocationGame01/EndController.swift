@@ -18,6 +18,6 @@ class EndController: UIViewController {
     }
     
     @IBAction func clickedBackToMenu(_ sender: UIButton) { //Back to screen 1
-        performSegue(withIdentifier: "toMenu", sender: self)
+        view.window?.rootViewController?.dismiss(animated: true)
     }
 }
