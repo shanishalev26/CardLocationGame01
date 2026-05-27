@@ -152,7 +152,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="clickedBackToMenu:" destination="yFy-ta-Sp9" eventType="touchUpInside" id="YX8-PP-QfF"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toMenu" id="Zhu-jF-yms"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fVs-A1-gSG">

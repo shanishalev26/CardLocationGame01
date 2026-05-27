@@ -38,11 +38,21 @@ class MenuController: UIViewController {
         }
 
         let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-        
-            let inputName = alertController.textFields![0].text!
-            let fixedName = inputName.capitalized
             
-            if fixedName.isEmpty == false {
+                let inputName = alertController.textFields![0].text ?? ""
+                
+                if inputName.isEmptyOrWhitespace {
+                    self.showToast(message: "Please enter your name")
+                    return
+                }
+                
+                if inputName.isEnglishName == false {
+                    self.showToast(message: "Name must contain only English letters")
+                    return
+                }
+                
+                let fixedName = inputName.capitalized
+                
                 self.playerName = fixedName
                 
                 self.menu_BTN_setName.setTitle("Set Name", for: .normal)
@@ -53,7 +63,6 @@ class MenuController: UIViewController {
                 self.menu_LBL_hiName.isHidden = false
                 
                 self.locationManager.requestLocation()
-            }
         }
 
         alertController.addAction(saveAction)

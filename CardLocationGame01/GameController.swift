@@ -26,10 +26,11 @@ class GameController: UIViewController {
 
     let cardSuits = ["clubs", "diamonds", "hearts", "spades"]
     
-    var timer: Timer?
-    var timerCounter = 3
     var roundCounter = 0
-    let maxRounds = 12
+    let maxRounds = 3
+    
+    var gameTimer: GameTimer?
+    var isViewActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +44,6 @@ class GameController: UIViewController {
         game_IMG_leftCard.image = UIImage(named: "back-card")
         game_IMG_rightCard.image = UIImage(named: "back-card")
         
-        game_LBL_timer.text = "\(timerCounter)"
-
-        game_IMG_leftCard.image = UIImage(named: "back-card")
-        game_IMG_rightCard.image = UIImage(named: "back-card")
-
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: secondly(t:))
     }
     
 
@@ -108,19 +103,6 @@ class GameController: UIViewController {
        }
    }
     
-    func secondly(t: Timer) {
-        timerCounter -= 1
-        game_LBL_timer.text = "\(timerCounter)"
-        
-        if timerCounter == 0 {
-            t.invalidate()
-            playRound()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.closeCardsAndStartAgain()
-            }
-        }
-    }
-
     func closeCardsAndStartAgain() {
         roundCounter += 1
         if roundCounter >= maxRounds {
@@ -131,10 +113,7 @@ class GameController: UIViewController {
         game_IMG_leftCard.image = UIImage(named: "back-card")
         game_IMG_rightCard.image = UIImage(named: "back-card")
         
-        timerCounter = 3
-        game_LBL_timer.text = "\(timerCounter)"
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: secondly(t:))
+        gameTimer?.start()
     }
     
     func markPlayerCard() {
@@ -163,6 +142,52 @@ class GameController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isViewActive = true
+        gameTimer = GameTimer(cb: self)
+        gameTimer?.start()
+            
+        // Listen for app going to background
+        NotificationCenter.default.addObserver(self, selector:
+        #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+            
+        // Listen for app returning to foreground
+        NotificationCenter.default.addObserver(self, selector:
+        #selector(appMovedToForeground), name:
+          UIApplication.didBecomeActiveNotification, object: nil)
+    }
+        
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        isViewActive = false
+        gameTimer?.stop()
+        //remove all observers when leaving screen
+        NotificationCenter.default.removeObserver(self)
+    }
+        
+        // called when user presses home button or receives a call
+        @objc func appMovedToBackground() {
+            gameTimer?.stop()
+        }
+          
+        // called when user returns to the app
+        @objc func appMovedToForeground() {
+            gameTimer?.resume()
+        }
     
     
 }
+extension GameController: CallBack_GameTimer {
+    func timerTick(counter: Int) {
+        game_LBL_timer.text = "\(counter)"
+    }
+      
+    func timerFinished() {
+        playRound()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            guard self.isViewActive else { return }
+            self.closeCardsAndStartAgain()
+        }
+    }
+  }
