@@ -27,10 +27,12 @@ class GameController: UIViewController {
     let cardSuits = ["clubs", "diamonds", "hearts", "spades"]
     
     var roundCounter = 0
-    let maxRounds = 12
+    let maxRounds = 4
     
     var gameTimer: GameTimer?
     var isViewActive = false
+    
+    var soundManager = SoundManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,8 @@ class GameController: UIViewController {
     }
     
     func playRound() {
+        
+        soundManager.playCardFlip()
         
         let leftValue = Int.random(in: 1...13)
         let rightValue = Int.random(in: 1...13)
@@ -129,6 +133,8 @@ class GameController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Winner Score move to screen 3
         if segue.identifier == "toEnd" {
+            soundManager.stopBackgroundMusic()
+            
             let endController = segue.destination as! EndController
             
             if playerScore >= computerScore {
@@ -148,6 +154,8 @@ class GameController: UIViewController {
         gameTimer = GameTimer(cb: self)
         gameTimer?.start()
         
+        soundManager.playBackgroundMusic()
+        
         // Listen for app going to background
         NotificationCenter.default.addObserver(self, selector:
           #selector(appMovedToBackground), name:
@@ -164,18 +172,24 @@ class GameController: UIViewController {
         isViewActive = false
         gameTimer?.stop()
         
+        soundManager.stopBackgroundMusic()
+        
         //remove all observers when leaving screen
         NotificationCenter.default.removeObserver(self)
     }
     
     // called when user presses home button or receives a call
     @objc func appMovedToBackground() {
+        
+        soundManager.pauseBackgroundMusic()
         gameTimer?.stop()
     }
       
     // called when user returns to the app
     @objc func appMovedToForeground() {
-      gameTimer?.resume()
+        
+        soundManager.resumeBackgroundMusic()
+        gameTimer?.resume()
     }
 }
 

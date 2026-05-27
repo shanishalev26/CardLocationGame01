@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1DC545EB2FC73C6C00312E0A /* card_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DC545E52FC70E2A00312E0A /* card_flip.mp3 */; };
+		1DC545EC2FC73C7000312E0A /* game_over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DC545EA2FC73ABB00312E0A /* game_over.mp3 */; };
+		1DC545ED2FC73C7400312E0A /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DC545E62FC70E2A00312E0A /* background_music.mp3 */; };
+		1DC545EE2FC73C7800312E0A /* victory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DC545E72FC70E2A00312E0A /* victory.mp3 */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1DC544DA2FBF03A500312E0A /* CardLocationGame01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardLocationGame01.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC545E52FC70E2A00312E0A /* card_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = card_flip.mp3; sourceTree = "<group>"; };
+		1DC545E62FC70E2A00312E0A /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
+		1DC545E72FC70E2A00312E0A /* victory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = victory.mp3; sourceTree = "<group>"; };
+		1DC545EA2FC73ABB00312E0A /* game_over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_over.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +56,7 @@
 		1DC544D12FBF03A500312E0A = {
 			isa = PBXGroup;
 			children = (
+				1DC545E42FC70C3700312E0A /* Sounds */,
 				1DC544DC2FBF03A500312E0A /* CardLocationGame01 */,
 				1DC544DB2FBF03A500312E0A /* Products */,
 			);
@@ -56,6 +68,17 @@
 				1DC544DA2FBF03A500312E0A /* CardLocationGame01.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1DC545E42FC70C3700312E0A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1DC545E52FC70E2A00312E0A /* card_flip.mp3 */,
+				1DC545EA2FC73ABB00312E0A /* game_over.mp3 */,
+				1DC545E62FC70E2A00312E0A /* background_music.mp3 */,
+				1DC545E72FC70E2A00312E0A /* victory.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +145,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DC545EB2FC73C6C00312E0A /* card_flip.mp3 in Resources */,
+				1DC545ED2FC73C7400312E0A /* background_music.mp3 in Resources */,
+				1DC545EE2FC73C7800312E0A /* victory.mp3 in Resources */,
+				1DC545EC2FC73C7000312E0A /* game_over.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
