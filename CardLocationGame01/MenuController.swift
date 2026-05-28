@@ -51,7 +51,7 @@ class MenuController: UIViewController {
                     return
                 }
                 
-                let fixedName = inputName.capitalized
+                let fixedName = String(inputName.capitalized.prefix(10))
                 
                 self.playerName = fixedName
                 

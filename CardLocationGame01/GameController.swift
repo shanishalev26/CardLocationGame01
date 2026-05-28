@@ -27,7 +27,7 @@ class GameController: UIViewController {
     let cardSuits = ["clubs", "diamonds", "hearts", "spades"]
     
     var roundCounter = 0
-    let maxRounds = 3
+    let maxRounds = 12
     
     var gameTimer: GameTimer?
     var isViewActive = false
@@ -79,11 +79,11 @@ class GameController: UIViewController {
     
     func updateScoreLabels() {
         if playerSide == "west" {
-            game_LBL_leftScore.text = "Score: \(playerScore)"
-            game_LBL_rightScore.text = "Score: \(computerScore)"
+            game_LBL_leftScore.text = "\(playerName): \(playerScore)"
+            game_LBL_rightScore.text = "PC: \(computerScore)"
         } else {
-            game_LBL_leftScore.text = "Score: \(computerScore)"
-            game_LBL_rightScore.text = "Score: \(playerScore)"
+            game_LBL_leftScore.text = "PC: \(computerScore)"
+            game_LBL_rightScore.text = "\(playerName): \(playerScore)"
         }
     }
 
