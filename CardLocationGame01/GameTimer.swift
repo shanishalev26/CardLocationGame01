@@ -13,7 +13,7 @@ protocol CallBack_GameTimer {
       
       var cb: CallBack_GameTimer?
       var timer: Timer?
-      var counter = 3
+      var counter = 5
 
       init(cb: CallBack_GameTimer) {
           self.cb = cb
@@ -21,7 +21,7 @@ protocol CallBack_GameTimer {
 
       func start() {
           stop()
-          counter = 3
+          counter = 5
           cb?.timerTick(counter: counter)
           timer = Timer.scheduledTimer(withTimeInterval: 1,
                    repeats: true, block: secondly(t:))
