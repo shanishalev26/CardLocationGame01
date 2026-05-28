@@ -7,7 +7,9 @@ class MenuController: UIViewController {
     @IBOutlet weak var menu_BTN_setName: UIButton!
     @IBOutlet weak var menu_BTN_start: UIButton!
     @IBOutlet weak var menu_LBL_hiName: UILabel!
-
+    @IBOutlet weak var menu_VIEW_westGlow: UIView!
+    @IBOutlet weak var menu_VIEW_eastGlow: UIView!
+    
     var playerName: String = ""
 
     var locationManager: CLLocationManager!
@@ -19,6 +21,14 @@ class MenuController: UIViewController {
 
         menu_BTN_start.isEnabled = false
         menu_LBL_hiName.isHidden = true
+        
+        if let savedName = UserDefaults.standard.string(forKey: "playerName") {
+              playerName = savedName
+              menu_LBL_hiName.text = "Hi \(playerName)!"
+              menu_LBL_hiName.isHidden = false
+              menu_BTN_setName.isEnabled = false
+        }
+
 
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -28,6 +38,10 @@ class MenuController: UIViewController {
 
     @IBAction func clickedStart(_ sender: UIButton) {
 
+    }
+    
+    func checkIfReadyToStart() {
+          menu_BTN_start.isEnabled = !playerName.isEmpty && !playerSide.isEmpty
     }
 
     @IBAction func clickedSetName(_ sender: UIButton) {
@@ -54,15 +68,16 @@ class MenuController: UIViewController {
                 let fixedName = String(inputName.capitalized.prefix(10))
                 
                 self.playerName = fixedName
-                
+                UserDefaults.standard.set(fixedName, forKey: "playerName")
+            
                 self.menu_BTN_setName.setTitle("Set Name", for: .normal)
                 self.menu_BTN_setName.isEnabled = false
                 self.menu_BTN_setName.titleLabel?.font = UIFont.systemFont(ofSize: 14)
                 
                 self.menu_LBL_hiName.text = "Hi \(self.playerName)!"
                 self.menu_LBL_hiName.isHidden = false
+                self.checkIfReadyToStart()
                 
-                self.locationManager.requestLocation()
         }
 
         alertController.addAction(saveAction)
@@ -82,6 +97,14 @@ class MenuController: UIViewController {
 
 extension MenuController: CLLocationManagerDelegate {
     
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+          if manager.authorizationStatus == .authorizedWhenInUse ||
+             manager.authorizationStatus == .authorizedAlways {
+              locationManager.requestLocation()
+          }
+      }
+
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("didUpdateLocations")
         
@@ -89,7 +112,7 @@ extension MenuController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             startLocation = location
             
-            let afekaLongitude = 34.8175
+            let afekaLongitude = 34.817549168324334
 
             if location.coordinate.longitude < afekaLongitude {
                 playerSide = "west"
@@ -100,7 +123,13 @@ extension MenuController: CLLocationManagerDelegate {
             
             print("got Location: \(location.coordinate.latitude) \(location.coordinate.longitude)")
             
-            menu_BTN_start.isEnabled = true
+            if playerSide == "west" {
+              menu_VIEW_westGlow.isHidden = false
+            } else {
+              menu_VIEW_eastGlow.isHidden = false
+            }
+            checkIfReadyToStart()
+
         }
     }
     

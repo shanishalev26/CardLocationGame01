@@ -27,7 +27,7 @@ class GameController: UIViewController {
     let cardSuits = ["clubs", "diamonds", "hearts", "spades"]
     
     var roundCounter = 0
-    let maxRounds = 12
+    let maxRounds = 10
     
     var gameTimer: GameTimer?
     var isViewActive = false
